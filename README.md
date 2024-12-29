@@ -4,5 +4,5 @@
 
 | Week | Month      | Project Title                              | Description                                                    |
 |------|------------|--------------------------------------------|----------------------------------------------------------------|
-| 1    | January    | Console Calculator App                    | Basic arithmetic operations with error handling.              |
-| 2    | January    | BMI Calculator                            | Weight and height to BMI.                                     |
+| 1    | January    | calculator                    | Basic arithmetic operations with error handling.              |
+| 2    | January    | WeightConverter                            | Weight and height to BMI.                                     |
