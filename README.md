@@ -4,5 +4,5 @@
 
 | Week | Month      | Project Title                              | Description                                                    |
 |------|------------|--------------------------------------------|----------------------------------------------------------------|
-| 1    | January    | calculator                    | Basic arithmetic operations with error handling.              |
+| 1    | January    | calculator                    | Basic arithmetic operations.              |
 | 2    | January    | WeightConverter                            | Weight and height to BMI.                                     |
