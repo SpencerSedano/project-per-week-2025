@@ -12,3 +12,4 @@
 /Users/spencersedano/Desktop/2025 Coding Resolution/WeightConverter/obj/Debug/net9.0/WeightConverter.pdb
 /Users/spencersedano/Desktop/2025 Coding Resolution/WeightConverter/obj/Debug/net9.0/WeightConverter.genruntimeconfig.cache
 /Users/spencersedano/Desktop/2025 Coding Resolution/WeightConverter/obj/Debug/net9.0/ref/WeightConverter.dll
+/Users/spencersedano/Desktop/2025 Coding Resolution/WeightConverter/obj/Debug/net9.0/WeightConverter.sourcelink.json

@@ -12,3 +12,4 @@
 /Users/spencersedano/Desktop/2025 Coding Resolution/calculator/obj/Debug/net9.0/calculator.pdb
 /Users/spencersedano/Desktop/2025 Coding Resolution/calculator/obj/Debug/net9.0/calculator.genruntimeconfig.cache
 /Users/spencersedano/Desktop/2025 Coding Resolution/calculator/obj/Debug/net9.0/ref/calculator.dll
+/Users/spencersedano/Desktop/2025 Coding Resolution/calculator/obj/Debug/net9.0/calculator.sourcelink.json
