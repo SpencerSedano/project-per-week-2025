@@ -1,30 +1,30 @@
-﻿using NUnit;
-using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-
+﻿using Microsoft.Playwright;
 
 namespace TAScheduleAutomation;
 
 public class Tests {
-    private IWebDriver driver;
-    
     [SetUp]
     public void Setup() {
-        driver = new ChromeDriver();
-        driver.Manage().Window.Maximize();
+
     }
 
     [Test]
-    public void Test1() {
-        driver.Navigate().GoToUrl("https://tdcenter.pu.edu.tw/p/405-1061-13442,c2707.php?Lang=zh-tw");
-        Assert.That(driver.Url, Is.EqualTo("https://tdcenter.pu.edu.tw/p/405-1061-13442,c2707.php?Lang=zh-tw"));
+    public async Task Test() {
+        EnvReader.Load("/Users/spencersedano/Desktop/2025 Coding Resolution/TAScheduleAutomation/.env");
+        
+        string? systemPassword = Environment.GetEnvironmentVariable("SYSTEM_PASSWORD");
+        
+        using var playwright = await Playwright.CreateAsync();
+        await using var browser = await playwright.Chromium.LaunchAsync(new BrowserTypeLaunchOptions {
+            Headless = false,
+        });
+        var page = await browser.NewPageAsync();
+        await page.GotoAsync("http://ta.pu.edu.tw/login.php");
+        await page.Locator("#rt_01").FillAsync("s1111067");
+        await page.Locator("#rt_02").FillAsync(systemPassword);
+        await page.Locator(".btn-primary").ClickAsync();
+        await Task.Delay(5000);
+
+
     }
-
-    [TearDown]
-    public void TearDown() {
-        driver?.Quit();
-        driver?.Dispose();
-    }
-
-
 }
