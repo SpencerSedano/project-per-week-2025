@@ -1,5 +1,137 @@
-<h3>Game</h3>
+@page "/game"
+@rendermode InteractiveWebAssembly
+@using Microsoft.AspNetCore.SignalR.Client
+@* @inject Navi    gationManager Navigation *@
+@* @implements IAsyncDisposable *@
+
+<PageTitle>Game</PageTitle>
+
+@* <div class="form-group"> *@
+@*     <label> *@
+@*         User: *@
+@*         <input @bind="userInput" /> *@
+@*     </label> *@
+@* </div> *@
+@* <div class="form-group"> *@
+@*     <label> *@
+@*         Message: *@
+@*         <input @bind="messageInput" size="50" /> *@
+@*     </label> *@
+@* </div> *@
+@* <button @onclick="Send" disabled="@(!IsConnected)">Send</button> *@
+@* *@
+@* <hr> *@
+@* *@
+@* <ul id="messagesList"> *@
+@*     @foreach (var message in messages) *@
+@*     { *@
+@*         <li>@message</li> *@
+@*     } *@
+@* </ul> *@
+
+<!-- 7x6 Table (no loops) -->
+<table class="table table-bordered vh-100">
+    <tr>
+        <td class="player-movement" @onclick="() => OnCellClick(0)" style="background-color: @(clickedValue == 0 ? "lightblue" : "yellow")">1</td>
+        <td class="player-movement" @onclick="() => OnCellClick(1)" style="background-color: @(clickedValue == 1 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">2</td>
+        <td class="player-movement" @onclick="() => OnCellClick(2)" style="background-color: @(clickedValue == 2 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">3</td>
+        <td class="player-movement" @onclick="() => OnCellClick(3)" style="background-color: @(clickedValue == 3 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">4</td>
+        <td class="player-movement" @onclick="() => OnCellClick(4)" style="background-color: @(clickedValue == 4 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">5</td>
+        <td class="player-movement" @onclick="() => OnCellClick(5)" style="background-color: @(clickedValue == 5 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">6</td>
+    </tr>
+    <tr>
+        <td @onclick="() => OnCellClick(6)" style="background-color: @(clickedValue == 6 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">7</td>
+        <td @onclick="() => OnCellClick(7)" style="background-color: @(clickedValue == 7 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">8</td>
+        <td @onclick="() => OnCellClick(8)" style="background-color: @(clickedValue == 8 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">9</td>
+        <td @onclick="() => OnCellClick(9)" style="background-color: @(clickedValue == 9 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">10</td>
+        <td @onclick="() => OnCellClick(10)" style="background-color: @(clickedValue == 10 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">11</td>
+        <td @onclick="() => OnCellClick(11)" style="background-color: @(clickedValue == 11 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">12</td>
+    </tr>
+    <tr>
+        <td @onclick="() => OnCellClick(12)" style="background-color: @(clickedValue == 12 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">13</td>
+        <td @onclick="() => OnCellClick(13)" style="background-color: @(clickedValue == 13 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">14</td>
+        <td @onclick="() => OnCellClick(14)" style="background-color: @(clickedValue == 14 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">15</td>
+        <td @onclick="() => OnCellClick(15)" style="background-color: @(clickedValue == 15 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">16</td>
+        <td @onclick="() => OnCellClick(16)" style="background-color: @(clickedValue == 16 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">17</td>
+        <td @onclick="() => OnCellClick(17)" style="background-color: @(clickedValue == 17 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">18</td>
+    </tr>
+    <tr>
+        <td @onclick="() => OnCellClick(18)" style="background-color: @(clickedValue == 18 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">19</td>
+        <td @onclick="() => OnCellClick(19)" style="background-color: @(clickedValue == 19 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">20</td>
+        <td @onclick="() => OnCellClick(20)" style="background-color: @(clickedValue == 20 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">21</td>
+        <td @onclick="() => OnCellClick(21)" style="background-color: @(clickedValue == 21 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">22</td>
+        <td @onclick="() => OnCellClick(22)" style="background-color: @(clickedValue == 22 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">23</td>
+        <td @onclick="() => OnCellClick(23)" style="background-color: @(clickedValue == 23 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">24</td>
+    </tr>
+    <tr>
+        <td @onclick="() => OnCellClick(24)" style="background-color: @(clickedValue == 24 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">25</td>
+        <td @onclick="() => OnCellClick(25)" style="background-color: @(clickedValue == 25 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">26</td>
+        <td @onclick="() => OnCellClick(26)" style="background-color: @(clickedValue == 26 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">27</td>
+        <td @onclick="() => OnCellClick(27)" style="background-color: @(clickedValue == 27 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">28</td>
+        <td @onclick="() => OnCellClick(28)" style="background-color: @(clickedValue == 28 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">29</td>
+        <td @onclick="() => OnCellClick(29)" style="background-color: @(clickedValue == 29 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">30</td>
+    </tr>
+    <tr>
+        <td @onclick="() => OnCellClick(30)" style="background-color: @(clickedValue == 30 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">31</td>
+        <td @onclick="() => OnCellClick(31)" style="background-color: @(clickedValue == 31 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">32</td>
+        <td @onclick="() => OnCellClick(32)" style="background-color: @(clickedValue == 32 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">33</td>
+        <td @onclick="() => OnCellClick(33)" style="background-color: @(clickedValue == 33 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">34</td>
+        <td @onclick="() => OnCellClick(34)" style="background-color: @(clickedValue == 34 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">35</td>
+        <td @onclick="() => OnCellClick(35)" style="background-color: @(clickedValue == 35 ? "lightblue" : (clickedValue == -1 ? "yellow" : ""))">36</td>
+    </tr>
+</table>
+
+<style>
+    .player-movement {
+        text-align: center;
+    }
+</style>
 
 @code {
-    
+    // private HubConnection? hubConnection;
+    // private List<string> messages = [];
+    // private string? userInput;
+    // private string? messageInput;
+    private int clickedValue = -1;  // Default value, -1 for "no cell clicked"
+
+    private void OnCellClick(int value)
+    {
+        clickedValue = value;  // Set the clicked cell value
+        StateHasChanged();  // Trigger re-render to update the table's background color
+    }
+
+    // protected override async Task OnInitializedAsync()
+    // {
+    //     hubConnection = new HubConnectionBuilder()
+    //         .WithUrl(Navigation.ToAbsoluteUri("/gamehub"))
+    //         .Build();
+    //
+    //     hubConnection.On<string, string>("ReceiveMessage", (user, message) =>
+    //     {
+    //         var encodedMsg = $"{user}: {message}";
+    //         messages.Add(encodedMsg);
+    //         InvokeAsync(StateHasChanged);
+    //     });
+    //
+    //     await hubConnection.StartAsync();
+    // }
+    //
+    // private async Task Send()
+    // {
+    //     if (hubConnection is not null)
+    //     {
+    //         await hubConnection.SendAsync("SendMessage", userInput, messageInput);
+    //     }
+    // }
+    //
+    // public bool IsConnected =>
+    //     hubConnection?.State == HubConnectionState.Connected;
+    //
+    // public async ValueTask DisposeAsync()
+    // {
+    //     if (hubConnection is not null)
+    //     {
+    //         await hubConnection.DisposeAsync();
+    //     }
+    // }
 }
