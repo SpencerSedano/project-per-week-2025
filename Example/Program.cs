@@ -1,1 +1,1 @@
-﻿Console.Write("I am an example");
+﻿
