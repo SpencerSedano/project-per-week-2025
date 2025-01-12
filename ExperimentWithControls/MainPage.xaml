@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ExperimentWithControls.MainPage">
@@ -26,11 +27,78 @@
 
             <Button
                 x:Name="CounterBtn"
-                Text="Click me" 
+                Text="Click me"
                 SemanticProperties.Hint="Counts the number of times you click"
                 Clicked="OnCounterClicked"
                 HorizontalOptions="Fill" />
-            <Entry Placeholder="Hey"/>
+
+            <Entry
+                Placeholder="Hey"
+                SemanticProperties.Hint="Lets you enter some text"
+                Margin="0,0,0,20"
+                TextChanged="InputView_OnTextChanged" />
+
+            <Label
+                Text="Here's what you typed: "
+                SemanticProperties.Description="Here's what you typed:" />
+
+            <Label
+                x:Name="EnteredText"
+                SemanticProperties.Description="The text that the user entered"
+                BackgroundColor="Gold" />
+            <Stepper
+                Minimum="0"
+                Maximum="10"
+                Increment="1"
+                SemanticProperties.Description="Lets you enter a whole number"
+                ValueChanged="Stepper_OnValueChanged" />
+            <Label
+                Text="Here's the stepper value: " />
+            <Label
+                x:Name="StepperValue"
+                SemanticProperties.Description="The number the user chose with the Stepper"
+                BackgroundColor="LightBlue"
+                Margin="0,0,0,20" />
+
+            <Slider
+                Minimum="0"
+                Maximum="1"
+                ValueChanged="Slider_OnValueChanged" />
+            <Label
+                Text="Heres the slider value: "
+                SemanticProperties.Description="Here's the slider value" />
+            <Label
+                x:Name="SliderValue"
+                SemanticProperties.Description="The number the user chose with the Slider"
+                BackgroundColor="LightBlue"
+                Margin="0,0,0,20" />
+            <HorizontalStackLayout Spacing="20">
+                <VerticalStackLayout>
+                    <Label Text="Pick a bird" SemanticProperties.Description="Picks a bird" />
+                    <Picker x:Name="BirdPicker" />
+                </VerticalStackLayout>
+
+                <VerticalStackLayout>
+                    <Label Text="Some birds"
+                           SemanticProperties.Description="A list of birds" 
+                           />
+                    <Label x:Name="Birds"
+                           Padding="10" MinimumWidthRequest="150"
+                           TextColor="White" BackgroundColor="DarkBlue"
+                           SemanticProperties.Description="Shows the added birds"
+                           />
+                </VerticalStackLayout>
+
+            </HorizontalStackLayout>
+
+            <Button 
+                x:Name="AddBird" 
+                Text="Add a bird" 
+                Margin="0,0,0,20"
+                    SemanticProperties.Hint="Adds a bird" 
+                Clicked="AddBird_OnClicked"
+                    
+                    />
         </VerticalStackLayout>
     </ScrollView>
 

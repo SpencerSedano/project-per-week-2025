@@ -7,6 +7,13 @@ public partial class MainPage : ContentPage
     public MainPage()
     {
         InitializeComponent();
+        BirdPicker.ItemsSource = new string[]
+        {
+            "Duck",
+            "Pigeon",
+            "Penguin",
+            "Ostrich"
+        };
     }
 
     private void OnCounterClicked(object sender, EventArgs e)
@@ -19,5 +26,30 @@ public partial class MainPage : ContentPage
             CounterBtn.Text = $"Clicked {count} times";
 
         SemanticScreenReader.Announce(CounterBtn.Text);
+    }
+
+    private void InputView_OnTextChanged(object? sender, TextChangedEventArgs e)
+    {
+        EnteredText.Text = e.NewTextValue;
+    }
+
+    private void Stepper_OnValueChanged(object? sender, ValueChangedEventArgs e)
+    {
+        StepperValue.Text = e.NewValue.ToString();
+    }
+
+    private void Slider_OnValueChanged(object? sender, ValueChangedEventArgs e)
+    {
+        SliderValue.Text = e.NewValue.ToString();
+    }
+
+    private void AddBird_OnClicked(object? sender, EventArgs e)
+    {
+        if (!String.IsNullOrEmpty(Birds.Text))
+        {
+            Birds.Text = Birds.Text + Environment.NewLine;
+        }
+
+        Birds.Text += BirdPicker.SelectedItem;
     }
 }
