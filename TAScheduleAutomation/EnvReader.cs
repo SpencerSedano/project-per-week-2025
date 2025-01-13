@@ -3,13 +3,15 @@ namespace TAScheduleAutomation;
 using System;
 using System.IO;
 
-
-public static class EnvReader {
-    public static void Load(string filePath) {
+public static class EnvReader
+{
+    public static void Load(string filePath)
+    {
         if (!File.Exists(filePath))
             throw new FileNotFoundException($"The file '{filePath}' does not exist.");
 
-        foreach (var line in File.ReadAllLines(filePath)) {
+        foreach (var line in File.ReadAllLines(filePath))
+        {
             if (string.IsNullOrWhiteSpace(line) || line.StartsWith("#"))
                 continue; // Skip empty lines and comments
 
