@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WeightConverter")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b0929f609fa66efe366ddffb614fc1c60d4d2a95")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+628bd44972687ce1370526681d1ef37d489e30fe")]
 [assembly: System.Reflection.AssemblyProductAttribute("WeightConverter")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WeightConverter")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
