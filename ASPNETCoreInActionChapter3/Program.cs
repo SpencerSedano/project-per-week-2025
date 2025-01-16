@@ -1,6 +1,5 @@
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
@@ -36,6 +35,7 @@ app.MapGet("/weatherforecast", () =>
 app.MapGet("/", () => "Hello World!");
 app.MapGet("/person", () => new Person("Spencer", "Sherry"));
 
+app.UseWelcomePage();
 app.Run();
 
 record Person(string FirstName, string LastName);
