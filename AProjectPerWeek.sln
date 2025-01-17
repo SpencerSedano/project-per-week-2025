@@ -17,10 +17,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MemoryGame", "MemoryGame\Me
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExperimentWithControls", "ExperimentWithControls\ExperimentWithControls.csproj", "{3D025B25-6180-4ACA-815B-A7922CFFC4A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimerWebApp", "TimerWebApp\TimerWebApp\TimerWebApp.csproj", "{8BC47CD3-2E91-4358-BB5E-C758F1EAC570}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimerWebApp.Client", "TimerWebApp\TimerWebApp.Client\TimerWebApp.Client.csproj", "{561427A7-38B0-420F-BDC9-9C958D66EBE5}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETCoreInActionChapter3", "ASPNETCoreInActionChapter3\ASPNETCoreInActionChapter3.csproj", "{64915CAA-A22D-4F00-B007-A6D2C418CEA5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PickRandomCards", "PickRandomCards\PickRandomCards.csproj", "{8D6530CF-9854-462E-847E-2F317D30DD4B}"
@@ -68,14 +64,6 @@ Global
 		{3D025B25-6180-4ACA-815B-A7922CFFC4A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D025B25-6180-4ACA-815B-A7922CFFC4A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D025B25-6180-4ACA-815B-A7922CFFC4A4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{8BC47CD3-2E91-4358-BB5E-C758F1EAC570}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{8BC47CD3-2E91-4358-BB5E-C758F1EAC570}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{8BC47CD3-2E91-4358-BB5E-C758F1EAC570}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{8BC47CD3-2E91-4358-BB5E-C758F1EAC570}.Release|Any CPU.Build.0 = Release|Any CPU
-		{561427A7-38B0-420F-BDC9-9C958D66EBE5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{561427A7-38B0-420F-BDC9-9C958D66EBE5}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{561427A7-38B0-420F-BDC9-9C958D66EBE5}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{561427A7-38B0-420F-BDC9-9C958D66EBE5}.Release|Any CPU.Build.0 = Release|Any CPU
 		{64915CAA-A22D-4F00-B007-A6D2C418CEA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{64915CAA-A22D-4F00-B007-A6D2C418CEA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{64915CAA-A22D-4F00-B007-A6D2C418CEA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
