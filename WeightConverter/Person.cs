@@ -1,6 +1,7 @@
 namespace WeightConverter;
 
-public class Person {
+public class Person
+{
     private int Id { get; set; }
     private string Name { get; set; }
     private string LastName { get; set; }

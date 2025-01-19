@@ -21,6 +21,7 @@ public static class StartProgram
 
     public static void Result()
     {
+        // int, string, float, double, Person
         Person newPerson = new Person(name, lastName, weight, height);
         Console.Write($"Hello {name} {lastName}. ");
         Console.Write($"Your BMI is: {newPerson.GetBmi():F2}");
