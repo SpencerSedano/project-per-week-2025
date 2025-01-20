@@ -27,6 +27,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Guys", "Guys\Guys.csproj", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASPNETCoreInActionChapter4", "ASPNETCoreInActionChapter4\ASPNETCoreInActionChapter4.csproj", "{4C962DEE-40B9-4B02-B668-C7D648E2B030}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimersApp", "TimersApp\TimersApp\TimersApp.csproj", "{8A2E8449-B859-4476-9F5C-1673481C8FEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TimersApp.Client", "TimersApp\TimersApp.Client\TimersApp.Client.csproj", "{2A38D613-00D6-4451-98EC-8F5C9A19549E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -84,5 +88,13 @@ Global
 		{4C962DEE-40B9-4B02-B668-C7D648E2B030}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4C962DEE-40B9-4B02-B668-C7D648E2B030}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4C962DEE-40B9-4B02-B668-C7D648E2B030}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A2E8449-B859-4476-9F5C-1673481C8FEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A2E8449-B859-4476-9F5C-1673481C8FEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A2E8449-B859-4476-9F5C-1673481C8FEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A2E8449-B859-4476-9F5C-1673481C8FEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2A38D613-00D6-4451-98EC-8F5C9A19549E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2A38D613-00D6-4451-98EC-8F5C9A19549E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2A38D613-00D6-4451-98EC-8F5C9A19549E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2A38D613-00D6-4451-98EC-8F5C9A19549E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
