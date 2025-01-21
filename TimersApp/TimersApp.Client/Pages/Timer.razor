@@ -7,40 +7,61 @@
 
 <button type="button" class="btn btn-dark" @onclick="CreateANewTimer">Add Timer</button>
 
-<div class="d-flex">
-@foreach(var timer in TimersCreated)
-{
-  @if(!string.IsNullOrEmpty(timer.Key))
-  {
-    <CreateATimer />
-    Console.WriteLine($"Timer created: {timer.Key}, {timer.Value}");
-  }
-  else
-  {
-    <p>No Timers Now</p>
-  }
-}
+<div class="d-flex justify-content-center flex-wrap">
+    @foreach (var timer in AllTimers)
+    {
+        @if (!string.IsNullOrEmpty(timer.Name))
+        {
+            <CreateATimer InitialColor="@timer.Color"/>
+            Console.WriteLine($"Timer created: {timer.Name}, {timer.Id}");
+        }
+        else
+        {
+            <p>No Timers Now</p>
+        }
+    }
 </div>
 
 @code {
-  public string? TimerName;
-  public int TimerId;
-  public Dictionary<string, int> TimersCreated = new Dictionary<string, int>();
-  
-   void CreateANewTimer()
-   {
-    Console.WriteLine($"This is the timer id: {TimerId}");
-    if(!string.IsNullOrEmpty(TimerName))
+    public string? TimerName;
+    public int TimerId = 0;
+    public Dictionary<string, int> TimersCreated = new();
+    List<Models.Timer> AllTimers = new List<Models.Timer>();
+    public List<string> colors = new()
     {
-      TimersCreated.TryAdd(TimerName, TimerId);
-    }
-    else
+        "bg-primary",
+        "bg-secondary",
+        "bg-success",
+        "bg-danger",
+        "bg-warning",
+        "bg-info",
+        "bg-light",
+        "bg-dark",
+        "bg-white"
+    };
+
+    private string GetRandomColor()
     {
-      Console.WriteLine("Please enter a valid name for the timer");
+        var randomIndex = Random.Shared.Next(0, colors.Count);
+        return colors[randomIndex];
     }
-    TimerId++;
-    Console.WriteLine($"This is the amount of timers: {TimersCreated.Count}");
-    InvokeAsync(StateHasChanged);
-   }
+
+    void CreateANewTimer()
+    {
+        Console.WriteLine($"This is the timer id: {TimerId}");
+        if (!string.IsNullOrEmpty(TimerName) && AllTimers.All(timer => timer.Name != TimerName))
+        {
+            // TimersCreated.TryAdd(TimerName, TimerId);
+            AllTimers.Add(new Models.Timer(++TimerId, TimerName, GetRandomColor()));
+        }
+        else
+        {
+            Console.WriteLine("Please enter a valid name for the timer");
+        }
+
+        // TimerId++;
+        Console.WriteLine(AllTimers);
+        InvokeAsync(StateHasChanged);
+    }
 
 }
