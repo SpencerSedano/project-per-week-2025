@@ -12,7 +12,7 @@
     {
         @if (!string.IsNullOrEmpty(timer.Name))
         {
-            <CreateATimer InitialColor="@timer.Color"/>
+            <CreateATimer InitialColor="@timer.Color" TimerName="@timer.Name"/>
             Console.WriteLine($"Timer created: {timer.Name}, {timer.Id}");
         }
         else
@@ -35,9 +35,7 @@
         "bg-danger",
         "bg-warning",
         "bg-info",
-        "bg-light",
         "bg-dark",
-        "bg-white"
     };
 
     private string GetRandomColor()

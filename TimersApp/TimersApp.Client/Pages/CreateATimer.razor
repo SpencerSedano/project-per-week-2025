@@ -1,7 +1,7 @@
 <div class="card text-center" style="width: 18rem;">
     <div class="card-body p-0">
         <h5 class="card-title @InitialColor text-white p-4">@FormattedTime</h5>
-        <p class="card-text">Choose your time</p>
+        <p class="card-text">@TimerName</p>
         <p>Hour</p>
         <input type="text" @bind="TimerHours"/>
         <p>Minute</p>
@@ -16,6 +16,9 @@
 @code {
     [Parameter]
     public string InitialColor { get; set; } = "bg-dark";
+
+    [Parameter] 
+    public string TimerName { get; set; } = "None";
     
     public System.Timers.Timer BestTimer = new();
 
