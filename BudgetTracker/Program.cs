@@ -18,16 +18,6 @@ class Program
         Console.WriteLine($"Hello {spencer.GetName()}, your amount of money is: {spencer.GetBankMoney()}");
 
 
-        Console.WriteLine("Save File? Yes/No");
-        var answer = Console.ReadLine();
-        if (answer?.ToUpper() == "YES")
-        {
-            spencer.SavingFile();
-        }
-
-        if (answer?.ToUpper() == "NO")
-        {
-            return;
-        }
+        
     }
 }
