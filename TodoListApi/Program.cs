@@ -25,19 +25,33 @@ app.UseSwaggerUI(options =>
 
 var todosList = new List<Todos>();
 
-app.MapGet("/api/todos", () => Results.Ok(todosList));
-app.MapGet("/api/todos/{id:int}", (int id) =>
-{
-    return todosList.Find(x => x.Id == id);
-});
+app.MapGet("/api/todos", () =>  Results.Ok(todosList));
+
+app.MapGet("/api/todos/{id:int}", (int id) => { return todosList.Find(x => x.Id == id); });
+
 app.MapPost("/api/addtodos", ([FromBody] Todos newTodo) =>
 {
     if (todosList.Any(x => x.Id == newTodo.Id))
     {
         return Results.BadRequest("A todo with the same ID already exists");
     }
+
     todosList.Add(newTodo);
     return Results.Created($"/api/todos/{newTodo.Name}", newTodo);
+});
+
+app.MapPatch("/api/todos/{id:int}", ([FromBody] Todos updateTodo, int id) =>
+{
+    if (todosList.Any(x => x.Id == id))
+    {
+        var individualTodo = todosList.FirstOrDefault(x => x.Id == id);
+
+        if (individualTodo != null) individualTodo = individualTodo with { Name = updateTodo.Name };
+        return Results.Ok(individualTodo);
+    }
+    
+    return Results.NotFound();
+
 });
 
 app.Run();
