@@ -27,7 +27,10 @@ var todosList = new List<Todos>();
 
 app.MapGet("/api/todos", () =>  Results.Ok(todosList));
 
-app.MapGet("/api/todos/{id:int}", (int id) => { return todosList.Find(x => x.Id == id); });
+app.MapGet("/api/todos/{id:int}", (int id) =>
+{
+    return todosList.Find(x => x.Id == id);
+});
 
 app.MapPost("/api/addtodos", ([FromBody] Todos newTodo) =>
 {
@@ -61,5 +64,5 @@ record Todos(
     int Id,
     [Required] string Name,
     [Required] string Description,
-    [Required] bool IsDone
+    [Required] bool IsDone = false
 );
