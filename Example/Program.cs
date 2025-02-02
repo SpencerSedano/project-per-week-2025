@@ -1,31 +1,58 @@
-﻿int myInt = 10;
+﻿ProcessAll(["Spencer", "John", "Sherry", "Inigo"]);
 
-byte myByte = (byte)myInt;
+List<string> ProcessAll(List<string> words)
+{
+    var stringsProcessors = new List<StringsProcessor>
+    {
+        new StringsTrimmingProcessor(),
+        new StringsUppercaseProcessor()
+    };
+    
+    List<string> result = words;
+    foreach (var stringsProcessor in stringsProcessors)
+    {
+        result = stringsProcessor.Process(result);
+    }
 
-double myDouble = (double)myByte;
+    foreach (var i in result)
+    {
+        Console.WriteLine(i);
+    }
+    
+    return result;
+}
 
-bool myBool = (bool)myDouble;
-
-string myString = "false";
-
-myBool = (bool)myString;
-
-myString = (string)myInt;
-
-myString = myInt.ToString();
-
-myBool = (bool)myByte;
-
-myByte = (byte)myBool;
-
-short myShort = (short)myInt;
-
-char myChar = 'x';
-
-myString = (string)myChar;
-
-long myLong = (long)myInt;
-
-decimal myDecimal = (decimal)myLong;
-
-myString = myString + myInt + myByte + myDouble + myChar;
+public class StringsProcessor
+{
+    public virtual List<string> Process(List<string> result)
+    {
+        return result;
+    }
+}
+public class StringsTrimmingProcessor : StringsProcessor
+{
+    public override List<string> Process(List<string> input)
+    {
+        var result = new List<string>();
+        foreach(string trimmedString in input)
+        {
+            int stringLength = trimmedString.Length / 2;
+            var resultString = trimmedString.Substring(0, stringLength);
+            result.Add(resultString);
+        }
+        return result;
+    }
+}
+public class StringsUppercaseProcessor : StringsProcessor
+{
+    public override List<string> Process(List<string> input)
+    {
+        var result = new List<string>();
+        
+        foreach(string upperString in input)
+        {
+            result.Add(upperString.ToUpper());
+        }
+        return result;
+    }
+}
