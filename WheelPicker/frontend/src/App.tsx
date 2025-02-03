@@ -5,7 +5,6 @@ function App() {
   return (
     <>
       <Navbar />
-      <h1 className="text-5xl">Main Program</h1>
       <WheelPicker />
     </>
   );

@@ -27,17 +27,13 @@ function WheelPicker() {
     "Y",
     "Z",
   ];
-
   const totalSlices = alphabet.length;
   const sliceAngle = 360 / totalSlices;
   const radius = 250; // Circle size
 
   return (
     <>
-      <div
-        className="flex items-center justify-center"
-        style={{ height: "calc(100dvh - 56px)" }}
-      >
+      <div className="flex h-screen items-center justify-center">
         <svg width="600" height="600" viewBox="-300 -300 600 600">
           {alphabet.map((label, i) => {
             const startAngle = (i * sliceAngle * Math.PI) / 180;
@@ -61,20 +57,16 @@ function WheelPicker() {
               <g key={i}>
                 <animateTransform
                   attributeName="transform"
-                  begin="0s" //Countdown to start
-                  dur="4s" //Force to run one loop of the wheel
-                  // end="6s" //Duration
-                  keyTimes="0; 1; 1"
-                  values="0 0 0; 360 0 0; 100 0 0"
+                  begin="0s"
+                  dur="20s"
                   type="rotate"
-                  // from="0 0 0"
-                  // to="180 0 0"
-                  repeatCount="3"
-                  fill="freeze"
+                  from="0 0 0"
+                  to="360 0 0"
+                  repeatCount="indefinite"
                 />
                 {/* Slice */}
                 <path
-                  d={`M0 0 L${x1} ${y1} A${radius} ${radius} 0 0 1 ${x2} ${y2} Z`}
+                  d={`M0 0 L${x1} ${y1} A${20} ${20} 0 0 1 ${x2} ${y2} Z`}
                   fill={`hsl(${(i * 360) / totalSlices}, 80%, 60%)`}
                   stroke="white"
                   strokeWidth="2"
