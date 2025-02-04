@@ -1,5 +1,5 @@
 function WheelPicker() {
-  const alphabet = [
+  const alphabet: string[] = [
     "A",
     "B",
     "C",
@@ -28,9 +28,9 @@ function WheelPicker() {
     "Z",
   ];
 
-  const totalSlices = alphabet.length;
-  const sliceAngle = 360 / totalSlices;
-  const radius = 250; // Circle size
+  const totalSlices: number = alphabet.length;
+  const sliceAngle: number = 360 / totalSlices;
+  const radius: number = 250; // Circle size
 
   return (
     <>
@@ -62,14 +62,14 @@ function WheelPicker() {
                 <animateTransform
                   attributeName="transform"
                   begin="0s" //Countdown to start
-                  dur="4s" //Force to run one loop of the wheel
+                  dur="2s" //Force to run one loop of the wheel
                   // end="6s" //Duration
-                  keyTimes="0; 1; 1"
-                  values="0 0 0; 360 0 0; 100 0 0"
+                  keyTimes="0; 0.6; 0.8; 0.9; 1"
+                  values="0 0 0; 720 0 0; 900 0 0; 1050 0 0; 1327 0 0"
                   type="rotate"
                   // from="0 0 0"
                   // to="180 0 0"
-                  repeatCount="3"
+                  // repeatCount="3"
                   fill="freeze"
                 />
                 {/* Slice */}
@@ -77,7 +77,7 @@ function WheelPicker() {
                   d={`M0 0 L${x1} ${y1} A${radius} ${radius} 0 0 1 ${x2} ${y2} Z`}
                   fill={`hsl(${(i * 360) / totalSlices}, 80%, 60%)`}
                   stroke="white"
-                  strokeWidth="2"
+                  strokeWidth="0.5"
                 />
 
                 {/* Label */}
