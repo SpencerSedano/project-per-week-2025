@@ -1,4 +1,4 @@
-function WheelPicker() {
+function WheelPicker({ startWheel }: { startWheel: boolean }) {
   const alphabet: string[] = [
     "A",
     "B",
@@ -36,7 +36,7 @@ function WheelPicker() {
     <>
       <div
         className="flex items-center justify-center"
-        style={{ height: "calc(100dvh - 56px)" }}
+        style={{ height: "calc(100dvh - 132px)" }}
       >
         <svg width="600" height="600" viewBox="-300 -300 600 600">
           {alphabet.map((label, i) => {
@@ -59,20 +59,21 @@ function WheelPicker() {
 
             return (
               <g key={i}>
-                <animateTransform
-                  attributeName="transform"
-                  begin="0s" //Countdown to start
-                  dur="2s" //Force to run one loop of the wheel
-                  // end="6s" //Duration
-                  keyTimes="0; 0.6; 0.8; 0.9; 1"
-                  values="0 0 0; 720 0 0; 900 0 0; 1050 0 0; 1327 0 0"
-                  type="rotate"
-                  // from="0 0 0"
-                  // to="180 0 0"
-                  // repeatCount="3"
-                  fill="freeze"
-                />
-                {/* Slice */}
+                {startWheel && (
+                  <animateTransform
+                    attributeName="transform"
+                    begin="0s" //Countdown to start, will be a variable
+                    dur="2s" //Force to run one loop of the wheel
+                    // end="6s" //Duration
+                    keyTimes="0; 0.6; 0.8; 0.9; 1"
+                    values="0 0 0; 720 0 0; 900 0 0; 1050 0 0; 1390 0 0"
+                    type="rotate"
+                    // from="0 0 0"
+                    // to="180 0 0"
+                    // repeatCount="3"
+                    fill="freeze"
+                  />
+                )}
                 <path
                   d={`M0 0 L${x1} ${y1} A${radius} ${radius} 0 0 1 ${x2} ${y2} Z`}
                   fill={`hsl(${(i * 360) / totalSlices}, 80%, 60%)`}
