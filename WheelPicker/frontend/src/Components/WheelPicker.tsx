@@ -32,6 +32,13 @@ function WheelPicker({ startWheel }: { startWheel: boolean }) {
   const sliceAngle: number = 360 / totalSlices;
   const radius: number = 250; // Circle size
 
+  const randomKeyFrames: number[] = [
+    Math.random() * 1500 + 500,
+    Math.random() * 1500 + 500,
+    Math.random() * 1500 + 500,
+    Math.random() * 1500 + 500,
+  ];
+
   return (
     <>
       <div
@@ -40,6 +47,7 @@ function WheelPicker({ startWheel }: { startWheel: boolean }) {
       >
         <svg width="600" height="600" viewBox="-300 -300 600 600">
           {alphabet.map((label, i) => {
+            //Angles in degress
             const startAngle = (i * sliceAngle * Math.PI) / 180;
             const endAngle = ((i + 1) * sliceAngle * Math.PI) / 180;
 
@@ -63,10 +71,10 @@ function WheelPicker({ startWheel }: { startWheel: boolean }) {
                   <animateTransform
                     attributeName="transform"
                     begin="0s" //Countdown to start, will be a variable
-                    dur="2s" //Force to run one loop of the wheel
+                    dur="5s" //Force to run one loop of the wheel
                     // end="6s" //Duration
-                    keyTimes="0; 0.6; 0.8; 0.9; 1"
-                    values="0 0 0; 720 0 0; 900 0 0; 1050 0 0; 1390 0 0"
+                    keyTimes="0; 0.5; 0.7; 0.9; 1"
+                    values={`0 0 0; ${randomKeyFrames[0]} 0 0; ${randomKeyFrames[1]} 0 0; ${randomKeyFrames[2]} 0 0; ${randomKeyFrames[3]} 0 0`}
                     type="rotate"
                     // from="0 0 0"
                     // to="180 0 0"

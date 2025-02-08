@@ -8,13 +8,18 @@ import WheelPicker from "./Components/WheelPicker";
 
 function App() {
   const [startWheel, setStartWheel] = useState<boolean>(false);
+  const [loopDuration, setLoopDuration] = useState<string | null>(null);
 
   function handleStartWheel() {
     setStartWheel(true);
 
     setTimeout(() => {
       setStartWheel(false);
-    }, 3000);
+    }, 10000);
+  }
+
+  function handleLoopDuration(e: React.ChangeEvent<HTMLInputElement>) {
+    setLoopDuration(e.target.value);
   }
 
   return (
@@ -25,6 +30,8 @@ function App() {
       <WheelControl
         startWheel={startWheel}
         handleStartWheel={handleStartWheel}
+        loopDuration={loopDuration ?? ""}
+        handleLoopDuration={handleLoopDuration}
       />
     </>
   );
