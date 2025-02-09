@@ -32,12 +32,25 @@ function WheelPicker({ startWheel }: { startWheel: boolean }) {
   const sliceAngle: number = 360 / totalSlices;
   const radius: number = 250; // Circle size
 
+  const minRandNumber: number = 500;
+  const maxRandNumber: number = 1500;
+
   const randomKeyFrames: number[] = [
-    Math.random() * 1500 + 500,
-    Math.random() * 1500 + 500,
-    Math.random() * 1500 + 500,
-    Math.random() * 1500 + 500,
+    //   Math.random() * (maxRandNumber - minRandNumber) + minRandNumber,
+    //   Math.random() * (maxRandNumber - minRandNumber) + minRandNumber,
+    //   Math.random() * (maxRandNumber - minRandNumber) + minRandNumber,
+    //   Math.random() * (maxRandNumber - minRandNumber) + minRandNumber,
   ];
+
+  for (let index = 0; index < 4; index++) {
+    randomKeyFrames[index] = Math.floor(
+      Math.random() * (maxRandNumber - minRandNumber) + minRandNumber,
+    );
+  }
+  const sortedRandomKeyFrames = randomKeyFrames.sort(function (a, b) {
+    return a - b;
+  });
+  sortedRandomKeyFrames.forEach((element) => console.log(element));
 
   return (
     <>
@@ -74,7 +87,7 @@ function WheelPicker({ startWheel }: { startWheel: boolean }) {
                     dur="5s" //Force to run one loop of the wheel
                     // end="6s" //Duration
                     keyTimes="0; 0.5; 0.7; 0.9; 1"
-                    values={`0 0 0; ${randomKeyFrames[0]} 0 0; ${randomKeyFrames[1]} 0 0; ${randomKeyFrames[2]} 0 0; ${randomKeyFrames[3]} 0 0`}
+                    values={`0 0 0; ${sortedRandomKeyFrames[0]} 0 0; ${sortedRandomKeyFrames[1]} 0 0; ${sortedRandomKeyFrames[2]} 0 0; ${sortedRandomKeyFrames[3]} 0 0`}
                     type="rotate"
                     // from="0 0 0"
                     // to="180 0 0"
