@@ -1,33 +1,50 @@
 import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0);
-  chrome.tabs.create({ url: "https://google.com" });
-  <>
-    <div>
-      <a href="https://vite.dev" target="_blank">
-        <img src={viteLogo} className="logo" alt="Vite logo" />
-      </a>
-      <a href="https://react.dev" target="_blank">
-        <img src={reactLogo} className="logo react" alt="React logo" />
-      </a>
-    </div>
-    <h1>Vite + React</h1>
-    <div className="card">
-      <button onClick={() => setCount((count) => count + 1)}>
-        count is {count}
-      </button>
-      <p>
-        Edit <code>src/App.tsx</code> and save to test HMR
-      </p>
-    </div>
-    <p className="read-the-docs">
-      Click on the Vite and React logos to learn more
-    </p>
-  </>;
+  interface MyDictionary {
+    traditional: string;
+    english: string;
+  }
+
+  const myChineseDictionary: MyDictionary[] = [
+    { traditional: "我", english: "I" },
+    { traditional: "現在", english: "right now" },
+    { traditional: "在", english: "in" },
+    { traditional: "看", english: "to look" },
+    { traditional: "軟體", english: "software" },
+    { traditional: "的", english: "possessive" },
+    { traditional: "能力", english: "capable" },
+  ];
+
+  const [selectionWord, setSelectionWord] = useState<string>("");
+
+  function handleMouseHover(
+    word: string,
+    event: React.MouseEvent<HTMLSpanElement>
+  ) {
+    if (myChineseDictionary[word.toLowerCase()]) {
+      const range = document.createRange();
+      range.selectNodeContents(event.currentTarget);
+      const selection = window.getSelection();
+      selection?.removeAllRanges();
+      selection?.addRange(range);
+      setSelectionWord(word);
+    }
+  }
+
+  return (
+    <>
+      <div onMouseOver={handleMouseHover}>我現在在看軟體的能力</div>
+      <ul>
+        {myChineseDictionary.map((value, index) => (
+          <li key={index}>
+            {value.traditional} and {value.english}
+          </li>
+        ))}
+      </ul>
+      <p>Selected: {selectionWord || "None"}</p>
+    </>
+  );
 }
 
 export default App;
