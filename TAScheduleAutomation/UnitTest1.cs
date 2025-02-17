@@ -52,6 +52,27 @@ public class Tests
         var linkSelector = "div#ly_content div.wrap table tbody tr td label.x-blue_dg_label a";
         await iframe.Locator(linkSelector).ClickAsync();
         
+        var iframeTwo = page.Frames.FirstOrDefault(frame => frame.Name == "frameMain");
+
+        if (iframeTwo == null)
+        {
+            Console.WriteLine("Iframe 'frameMain' not found.");
+            return;
+        }
+        
+        await page.Mouse.MoveAsync(0, 100);
+        
+        await iframeTwo.Locator("#addRow").HoverAsync();
+        
+        await Task.Delay(2000);
+        await iframeTwo.Locator("#addRow").ClickAsync();
+        
+        await Task.Delay(3000);
+
+        await iframeTwo.Locator("//*[@id=\"jsdate1\"]").ClickAsync();
+
+        await iframeTwo.Locator("//*[@id=\"ui-datepicker-div\"]/table/tbody/tr[5]/td[3]/a").ClickAsync();
+        
         await Task.Delay(10000);
     }
 }
